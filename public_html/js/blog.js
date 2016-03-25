@@ -5,9 +5,18 @@ $(function (){
         
     Backendless.initApp(APPLICATION_ID, SECRET_KEY, VERSION);
         
-    var user = new Backendless.User();
-    user.email = "daniellefarias813@gmail.com";
-    user.password = "Cinnamon";
-    Backendless.UserService.register(user);
-    
+    //var user = new Backendless.User();
+    //user.email = "daniellefarias813@gmail.com";
+    //user.password = "Cinnamon";
+    //Backendless.UserService.register(user);  
+    var dataScore = Backendless.Persistence.of(Posts);
+    var post = new Posts({title: "My First Blog Post", content:"My first blog post content", email:"email@email.com"});
+    dataScore.save(post);
 });
+
+    function Posts(args){
+        args = args || {};
+        this.title = args.title || "";
+        this.content = args.content || "";
+        this.authorEmail = args.emailEmail || "";
+    }
