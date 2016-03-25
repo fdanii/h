@@ -10,7 +10,7 @@ $(function (){
     //user.password = "Cinnamon";
     //Backendless.UserService.register(user);  
     var dataScore = Backendless.Persistence.of(Posts);
-    var post = new Posts({title: "My First Blog Post", content:"My first blog post content", email:"email@email.com"});
+    var post = new Posts({title: "My First Blog Post", content:"My first blog post content", authorEmail:"email@email.com"});
     dataScore.save(post);
 });
 
@@ -18,5 +18,5 @@ $(function (){
         args = args || {};
         this.title = args.title || "";
         this.content = args.content || "";
-        this.authorEmail = args.emailEmail || "";
+        this.authorEmail = args.authorEmail || "";
     }
