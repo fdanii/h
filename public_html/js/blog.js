@@ -13,6 +13,10 @@ $(function (){
         posts: postsCollection.data
     };
     
+    Handlebars.registerHelper('formant', function (time) {
+        return moment(time).format("dddd, MMMM Do YYYY")
+    });
+    
     var blogScript = $("#blogs-template").html();
     var blogTemplate = Handlebars.compile(blogScript);
     var blogHTML = blogTemplate(wrapper);
