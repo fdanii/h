@@ -13,8 +13,8 @@ $(function (){
         posts: postsCollection.data
     };
     
-    Handlebars.registerHelper('formant', function (time) {
-        return moment(time).format("dddd, MMMM Do YYYY")
+    Handlebars.registerHelper("format", function (time) {
+        return moment(time).format("dddd, MMMM Do YYYY");
     });
     
     var blogScript = $("#blogs-template").html();
@@ -26,9 +26,10 @@ $(function (){
     
 });
 
-    function Posts(args){
+    function Posts(args) {
         args = args || {};
         this.title = args.title || "";
         this.content = args.content || "";
         this.authorEmail = args.authorEmail || "";
+        
     }
