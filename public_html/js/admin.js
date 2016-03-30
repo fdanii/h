@@ -10,6 +10,15 @@ $(function (){
     
     $('.main-container').html(loginTemplate);
     
+    $(document).on('submit', 'form-signin', function(event){
+       event.preventDefault();
+       
+       var data= $(this).serializeArray(),
+       email = data[0].value,
+       password = data[1].value;
+       
+       Backendless.UserService.login(email, password, true, new Backendless.Async[userLoggedIn, getError])
+    });
     
 });
 
@@ -21,3 +30,11 @@ $(function (){
         
     }
 
+function userLoggedIn() {
+    console.log("user successfully logged in");
+}
+
+function gotError(error) {
+    console.log("Error message - " + error.message);
+    console.log("Error code - " + error.code);
+}
