@@ -5,7 +5,7 @@ body {
 }
 
 p a  {
-    color: #fff;
+    color: beige;
 }
 p a.selected, p a:hover {
     color: #A8E9FF;
