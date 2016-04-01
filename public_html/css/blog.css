@@ -4,6 +4,13 @@ body {
     flex-direction: column;
 }
 
+p a  {
+    color: #fff;
+}
+p a.selected, p a:hover {
+    color: #A8E9FF;
+}
+
 main {
     flex: 1 0 auto;
 }

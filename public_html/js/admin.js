@@ -10,14 +10,14 @@ $(function (){
     
     $('.main-container').html(loginTemplate);
     
-    $(document).on('submit', 'form-signin', function(event){
+    $(document).on('submit', '.form-signin', function(event){
        event.preventDefault();
        
        var data= $(this).serializeArray(),
-       email = data[0].value,
-       password = data[1].value;
+        email = data[0].value,
+        password = data[1].value;
        
-       Backendless.UserService.login(email, password, true, new Backendless.Async[userLoggedIn, getError])
+       Backendless.UserService.login(email, password, true, new Backendless.Async(userLoggedIn, gotError));
     });
     
 });
