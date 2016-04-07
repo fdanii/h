@@ -27,13 +27,19 @@ $(function (){
         var addBlogTemplate = Handlebars.compile(addBlogScript);
     
         $('.main-container').html(addBlogTemplate);
+       // tinymce.init({ selector:'textarea' });
     });
     $(document).on('submit','.form-add-blog', function (event){
         event.preventDefault();
         
-        var data = $(this).serializeArray()
+        var data = $(this).serializeArray(),
         title = data[0].value,
         content = data[1].value;
+        
+        if (content === "" || title ==="") {
+            Materialize.toast('Cannot leave title or content empty!', 4000, 'rounded');
+        }
+        else {
         
         var dataStore = Backendless.Persistence.of(Posts);
         
@@ -43,10 +49,11 @@ $(function (){
             authorEmail: Backendless.UserService.getCurrentUser().email
         });
         
-        dataStore.save(postObject);
-        
-        this.title.value = "";
-        this.content.value = "";
+            dataStore.save(postObject);
+      
+            this.title.value = "";
+            this.content.value = "";
+        }
     });
     
     $(document).on('click', '.logout', function (){
@@ -86,5 +93,5 @@ function userLoggedOut(){
 function gotError(error) {
     console.log("Error message - " + error.message);
     console.log("Error code - " + error.code);
-    Materialize.toast('Login Incorrect', 4000);
+    Materialize.toast('Login Incorrect', 4000, 'rounded');
 }
